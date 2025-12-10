@@ -84,8 +84,7 @@ data "aws_vpc" "default" {
   default = true
 }
 data "aws_security_group" "default_sg" {
-  default = true
-}
+  name= default
 
 
 resource "aws_security_group" "web_sg" {
