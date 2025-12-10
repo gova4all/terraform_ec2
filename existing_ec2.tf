@@ -80,3 +80,34 @@ resource "aws_instance" "existing_ec2" {
     volume_type           = "gp3"
   }
 }
+data "aws_vpc" "default" {
+  default = true
+}
+
+
+resource "aws_security_group" "web_sg" {
+  name        = "web-sg"
+  description = "Security group for web server"
+  vpc_id      = data.aws_vpc.default.id
+
+  # Inbound Rules
+  ingress {
+    description = "Allow HTTP"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "Allow HTTPS"
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "web-sg"
+  }
+}
