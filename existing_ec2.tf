@@ -42,11 +42,7 @@ resource "aws_instance" "existing_ec2" {
   capacity_reservation_specification {
     capacity_reservation_preference = "open"
   }
-  cpu_options {
-    amd_sev_snp      = null
-    core_count       = 2
-    threads_per_core = 1
-  }
+ 
   credit_specification {
     cpu_credits = "standard"
   }
