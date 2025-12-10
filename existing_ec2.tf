@@ -24,7 +24,7 @@ resource "aws_instance" "existing_ec2" {
   placement_partition_number           = 0
   private_ip                           = "172.31.25.205"
   secondary_private_ips                = []
-  security_groups                      = [aws_security_group.web_sg]
+  security_groups                      = [aws_security_group.web_sg.id]
   source_dest_check                    = true
   subnet_id                            = "subnet-06997a377f8ea7406"
   tags = {
