@@ -26,7 +26,7 @@ pipeline {
                     withSonarQubeEnv('mysonarqube') {
                         sh '''
                             sonar-scanner \
-                      -Dsonar.projectKey=EC2 \
+                      -Dsonar.projectKey=terraform_ec2 \
                       -Dsonar.sources=. \
                       -Dsonar.host.url=http://localhost:9000 \
                       -Dsonar.token=$SONAR_TOKEN
