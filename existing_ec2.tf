@@ -38,7 +38,7 @@ resource "aws_instance" "existing_ec2" {
   user_data_base64            = null
   user_data_replace_on_change = null
   volume_tags                 = null
-  vpc_security_group_ids      = ["sg-0e51c2fa157cc1156"]
+  vpc_security_group_ids      = [data.aws_security_group.default_sg.id]
   capacity_reservation_specification {
     capacity_reservation_preference = "open"
   }
@@ -81,6 +81,9 @@ resource "aws_instance" "existing_ec2" {
   }
 }
 data "aws_vpc" "default" {
+  default = true
+}
+data "aws_security_group" "default_sg" {
   default = true
 }
 
